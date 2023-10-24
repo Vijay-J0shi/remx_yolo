@@ -166,5 +166,6 @@ datasets/
 
 # Ignore model
 models
+models.zip
 yolov8*
 runs/
