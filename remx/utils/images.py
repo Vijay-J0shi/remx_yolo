@@ -79,14 +79,6 @@ def img_rename(folder_path: str):
                     )
 
 
-# Example usage
-img_rename("/path/to/your/folder")
-
-
-# Example usage:
-img_rename("/path/to/your/folder")
-
-
 class ImgSize:
     def __init__(self, width: int, height: int, channel: int = 3) -> None:
         self.height = height

@@ -166,3 +166,5 @@ datasets/
 
 # Ignore model
 models
+yolov8*
+runs/
