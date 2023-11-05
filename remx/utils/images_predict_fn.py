@@ -82,20 +82,20 @@ def draw_bboxes(img, inverse_coordinates, indices, scores, class_ids, CLASSES):
         new_scores.append(score)
         labels.append(label)
 
-        cls_id = int(label)
-        cls = CLASSES[cls_id]
+        # cls_id = int(label)
+        # cls = CLASSES[cls_id]
         box_color = (255, 0, 255)
 
         cv2.rectangle(img, tuple(bbox[:2]), tuple(bbox[2:]), box_color, 10)
-        cv2.putText(
-            img,
-            f"{cls}:{int(score*100)}",
-            (bbox[0], bbox[1] - 2),
-            fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-            fontScale=3.0,
-            color=(0, 0, 0),
-            thickness=3,
-        )
+        # cv2.putText(
+        #     img,
+        #     f"{cls}:{int(score*100)}",
+        #     (bbox[0], bbox[1] - 2),
+        #     fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #     fontScale=3.0,
+        #     color=(0, 0, 0),
+        #     thickness=3,
+        # )
 
     return {
         "img": img,
