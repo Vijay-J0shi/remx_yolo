@@ -7,7 +7,6 @@ import numpy as np
 from images import letterbox, ImgSize, inverse_letterbox_coordinate_transform
 
 
-# TODO(Adam-Al-Rahman): Optimize the compute_iou function
 def compute_iou(box, boxes):
     # Compute xmin, ymin, xmax, ymax for both boxes
     xmin = np.maximum(box[0], boxes[:, 0])
@@ -29,7 +28,6 @@ def compute_iou(box, boxes):
     return iou
 
 
-# TODO(Adam-Al-Rahman): Optimize the nms function
 def nms(boxes, scores, iou_threshold):
     """
     Non-maximum suppression (NMS)
@@ -198,22 +196,6 @@ def map_lb_original_img(original_img, letterboxed_boxes):
     return inverse_coordinates
 
 
-# def letterboxed_result(boxes, indices, scores, class_ids, CLASSES=None):
-#     letterboxed_boxes = []
-#     scores = []
-#     labels = []
-
-#     for bbox, score, label in zip(
-#         xywh2xyxy(boxes[indices]), scores[indices], class_ids[indices]
-#     ):
-#         bbox = bbox.round().astype(np.int32).tolist()
-#         letterboxed_boxes.append(tuple(bbox))
-#         scores.append(score)
-#         # labels.append(CLASSES[label])
-
-#     return {"letterboxed_boxes": letterboxed_boxes, "labels": labels, "scores": scores}
-
-
 def letterboxed_result(boxes, indices, scores, class_ids, CLASSES=None):
     letterboxed_boxes = []
     new_scores = []
@@ -251,10 +233,11 @@ def predict_images(
         # TODO(Adam-Al-Rahman): Decide and arrange the session in a way that handle one image followed by folder while testing
         # output = ort_session(img)
     else:
-        prediction_output = []
+        labels_dir_predict = {}
         for root, labels, _ in os.walk(main_dir):
             for label in labels:
                 nested_folder_path = os.path.join(root, label)
+                all_file_predict = {}
                 for image in os.listdir(nested_folder_path):
                     if image.endswith(".jpg") or image.endswith(".png"):
                         img = os.path.join(nested_folder_path, image)
@@ -306,18 +289,10 @@ def predict_images(
                             CLASSES=["axis-deer", "elephant"],
                         )
 
-                        prediction_output.append(
-                            {
-                                root
-                                + "/"
-                                + label
-                                + "/"
-                                + image: {
-                                    "img": original_image_predict["img"],
-                                    "inverse_coordiante": inverse_coordinate,
-                                    "labels": original_image_predict["labels"],
-                                }
-                            }
-                        )
-
-        return prediction_output
+                        all_file_predict[root + "/" + label + "/" + image] = {
+                            "img": original_image_predict["img"],
+                            "coordiante": inverse_coordinate,
+                            "labels": label,
+                        }
+                labels_dir_predict[label] = all_file_predict
+        return labels_dir_predict
