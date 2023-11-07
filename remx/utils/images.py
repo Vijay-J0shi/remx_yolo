@@ -180,29 +180,6 @@ from typing import List, Tuple
 BBox = Tuple[float, float, float, float]  # (x1, y1, x2, y2) for single bounding box
 
 
-def coordinate_normalize(
-    fn: callable, bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
-):
-    letterbox_coordinate = fn(
-        bboxes=bboxes, original_size=original_size, letterboxed_size=letterboxed_size
-    )
-
-    noramlized_coordinate = []
-    for bbox in letterbox_coordinate:
-        x1, y1, x2, y2 = bbox
-        noramlized_coordinate.append(
-            (
-                x1 / letterboxed_size.width,
-                y1 / letterboxed_size.height,
-                x2 / letterboxed_size.width,
-                y2 / letterboxed_size.height,
-            )
-        )
-
-    return noramlized_coordinate
-
-
-@coordinate_normalize
 def letterbox_coordinate_transform(
     bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
 ) -> List[BBox]:
@@ -230,6 +207,28 @@ def letterbox_coordinate_transform(
         map_y2 = round((y2 + pad_h / (2 * aspect_ratio)) * aspect_ratio)
         letterboxed_bboxes.append((map_x1, map_y1, map_x2, map_y2))
     return letterboxed_bboxes
+
+
+def coordinate_normalize(
+    bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
+):
+    letterbox_coordinate = letterbox_coordinate_transform(
+        bboxes=bboxes, original_size=original_size, letterboxed_size=letterboxed_size
+    )
+
+    noramlized_coordinate = []
+    for bbox in letterbox_coordinate:
+        x1, y1, x2, y2 = bbox
+        noramlized_coordinate.append(
+            (
+                x1 / letterboxed_size.width,
+                y1 / letterboxed_size.height,
+                x2 / letterboxed_size.width,
+                y2 / letterboxed_size.height,
+            )
+        )
+
+    return noramlized_coordinate
 
 
 def inverse_letterbox_coordinate_transform(
