@@ -5,30 +5,6 @@ import numpy as np
 # import sys  # for cli implementation
 
 
-# def img_rename(folder_path: str):
-#     """
-#     The `img_rename` function renames all image files in a given folder and its subfolders by appending
-#     the parent folder name and a unique index to the original file name.
-
-#     :param folder_path: The `folder_path` parameter is a string that represents the path to the folder
-#     where the image files are located
-#     :type folder_path: str
-#     """
-#     for root, dirnames, filenames in os.walk(folder_path):
-#         for dirname in dirnames:
-#             i = 1  # Start the index at 1
-#             nested_folder_path = os.path.join(root, dirname)
-#             for filename in os.listdir(nested_folder_path):
-#                 if filename.endswith(".jpg") or filename.endswith(".png"):
-#                     base_filename, file_extension = os.path.splitext(filename)
-#                     new_filename = f"{dirname}-{i}{file_extension}"
-#                     i += 1
-#                     os.rename(
-#                         os.path.join(nested_folder_path, filename),
-#                         os.path.join(nested_folder_path, new_filename),
-#                     )
-
-
 # Resolve files overwritten or disappearing.
 # The new filenames clash and result in overwriting of old of same base filename in subfolder.
 def generate_random_string(length=6):
@@ -183,6 +159,25 @@ BBox = Tuple[float, float, float, float]  # (x1, y1, x2, y2) for single bounding
 def letterbox_coordinate_transform(
     bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
 ) -> List[BBox]:
+    """
+    The function `letterbox_coordinate_transform` takes a list of bounding boxes, the original size of
+    an image, and the letterboxed size of the image, and returns a list of transformed bounding boxes
+    that correspond to the letterboxed image.
+
+    :param bboxes: The `bboxes` parameter is a list of bounding boxes. Each bounding box is represented
+    as a tuple of four values: `(x1, y1, x2, y2)`. `x1` and `y1` are the coordinates of the top-left
+    corner of the bounding box
+    :type bboxes: List[BBox]
+    :param original_size: The original_size parameter represents the size of the original image. It is
+    an object of type ImgSize, which typically contains the width and height of the image
+    :type original_size: ImgSize
+    :param letterboxed_size: The `letterboxed_size` parameter represents the dimensions of the
+    letterboxed image. It is an instance of the `ImgSize` class, which typically contains the `width`
+    and `height` attributes
+    :type letterboxed_size: ImgSize
+    :return: a list of transformed bounding boxes in the letterboxed image dimensions.
+    """
+
     # Calculate the aspect ratio of the original and letterboxed sizes
     aspect_ratio = min(
         letterboxed_size.height / original_size.width,
@@ -211,6 +206,26 @@ def letterbox_coordinate_transform(
 def coordinate_normalize(
     bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
 ):
+    """
+    The `coordinate_normalize` function takes a list of bounding boxes, the original image size, and the
+    letterboxed image size, and returns the normalized coordinates of the bounding boxes.
+
+    :param bboxes: The `bboxes` parameter is a list of bounding boxes. Each bounding box is represented
+    as a tuple of four values: `(x1, y1, x2, y2)`. `x1` and `y1` are the coordinates of the top-left
+    corner of the bounding box
+    :type bboxes: List[BBox]
+    :param original_size: The original_size parameter represents the size of the original image before
+    any letterboxing or resizing was applied. It is an object of type ImgSize, which likely contains the
+    width and height of the original image
+    :type original_size: ImgSize
+    :param letterboxed_size: The `letterboxed_size` parameter represents the size of the image after it
+    has been letterboxed. Letterboxing is a technique used to maintain the aspect ratio of an image by
+    adding black bars to the top and bottom or sides of the image. The `letterboxed_size` parameter
+    should be an object
+    :type letterboxed_size: ImgSize
+    :return: a list of normalized coordinates.
+    """
+
     letterbox_coordinate = letterbox_coordinate_transform(
         bboxes=bboxes, original_size=original_size, letterboxed_size=letterboxed_size
     )
@@ -229,6 +244,73 @@ def coordinate_normalize(
         )
 
     return noramlized_coordinate
+
+
+# TODO(Vijay-J0shi): Optimize the code to handle relative paths
+def img_label_map(labels_dir, img_dir):
+    from PIL import Image
+
+    # Iterate through the text files in the directory
+    for filename in os.listdir(labels_dir):
+        if filename.endswith(".txt"):
+            file_path = os.path.join(labels_dir, filename)
+
+            # Read the content of the text file
+            with open(file_path, "r") as file:
+                lines = file.readlines()
+
+            # Extract the image name from the filename
+            image_name = filename.replace(".txt", ".jpg")
+
+            # Function to find the size (width and height) of an image by its name
+            def find_image_size(image_name):
+                image_path = os.path.join(img_dir, image_name)
+
+                if os.path.exists(image_path):
+                    with Image.open(image_path) as img:
+                        width, height = img.size
+                        return width, height
+                else:
+                    return None
+
+            image_size = find_image_size(image_name)
+
+            if image_size is not None:
+                width = image_size[0]
+                height = image_size[1]
+
+                print(width, height)
+
+                # Process and resize each line in the text file
+                updated_lines = []
+                for line in lines:
+                    parts = line.strip().split(" ")
+                    if len(parts) == 5:
+                        label, xmin, ymin, xmax, ymax = parts
+
+                        # Convert the coordinates to float values
+                        xmin, ymin, xmax, ymax = map(float, [xmin, ymin, xmax, ymax])
+
+                        coordinate = coordinate_normalize(
+                            bboxes=[(xmin, ymin, xmax, ymax)],
+                            original_size=ImgSize(width, height),
+                            letterboxed_size=ImgSize(640, 640),
+                        )
+
+                        updated_line = ""
+                        for bbox in coordinate:
+                            x1, y1, x2, y2 = bbox
+                            # Create the updated line
+                            updated_line = f"{label} {x1} {y1} {x2} {y2}\n"
+                        updated_lines.append(updated_line)
+
+                # Overwrite the text file with the updated coordinates
+                with open(file_path, "w") as file:
+                    file.writelines(updated_lines)
+
+                print(f"Updated coordinates in {filename}")
+            else:
+                print(f"Image '{image_name}' not found.")
 
 
 def inverse_letterbox_coordinate_transform(
