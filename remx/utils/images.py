@@ -192,7 +192,6 @@ def letterbox_coordinate_transform(
     # Calculate the amount of padding added during the letterbox operation
     pad_w = letterboxed_size.width - (aspect_ratio * original_size.width)
     pad_h = letterboxed_size.height - (aspect_ratio * original_size.height)
-    print(pad_h, pad_w)
 
     # Convert the bounding box coordinates to the letterboxed image dimensions
     letterboxed_bboxes = []
@@ -215,6 +214,7 @@ def coordinate_normalize(
     letterbox_coordinate = letterbox_coordinate_transform(
         bboxes=bboxes, original_size=original_size, letterboxed_size=letterboxed_size
     )
+    print(letterbox_coordinate)
 
     noramlized_coordinate = []
     for bbox in letterbox_coordinate:
