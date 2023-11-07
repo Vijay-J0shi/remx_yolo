@@ -110,6 +110,9 @@ def letterbox(img: np.ndarray, new_size: ImgSize, fill_value: int = 114) -> np.n
     y_range_start = int(center_y - (resized_h / 2))
     y_range_end = int(center_y + (resized_h / 2))
 
+    padding_width = new_size.width - resized_w
+    padding_height = new_size.height - resized_h
+
     padded_img[y_range_start:y_range_end, x_range_start:x_range_end, :] = resized_img
     return padded_img
 
@@ -175,6 +178,58 @@ from typing import List, Tuple
 # the coordinates of a bounding box in the format (x1, y1, x2, y2),
 # where (x1, y1) is the top-left corner and (x2, y2) bottom-right corener of single bounding box
 BBox = Tuple[float, float, float, float]  # (x1, y1, x2, y2) for single bounding box
+
+
+def coordinate_normalize(
+    fn: callable, bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
+):
+    letterbox_coordinate = fn(
+        bboxes=bboxes, original_size=original_size, letterboxed_size=letterboxed_size
+    )
+
+    noramlized_coordinate = []
+    for bbox in letterbox_coordinate:
+        x1, y1, x2, y2 = bbox
+        noramlized_coordinate.append(
+            (
+                x1 / letterboxed_size.width,
+                y1 / letterboxed_size.height,
+                x2 / letterboxed_size.width,
+                y2 / letterboxed_size.height,
+            )
+        )
+
+    return noramlized_coordinate
+
+
+@coordinate_normalize
+def letterbox_coordinate_transform(
+    bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
+) -> List[BBox]:
+    # Calculate the aspect ratio of the original and letterboxed sizes
+    aspect_ratio = min(
+        letterboxed_size.height / original_size.width,
+        letterboxed_size.width / original_size.height,
+    )
+
+    # Calculate the amount of padding added during the letterbox operation
+    pad_w = letterboxed_size.width - (aspect_ratio * original_size.width)
+    pad_h = letterboxed_size.height - (aspect_ratio * original_size.height)
+    print(pad_h, pad_w)
+
+    # Convert the bounding box coordinates to the letterboxed image dimensions
+    letterboxed_bboxes = []
+    for bbox in bboxes:
+        x1, y1, x2, y2 = bbox
+        # (x1, y1) is the top-left corner of single bounding box
+        map_x1 = round((x1 + pad_w / (2 * aspect_ratio)) * aspect_ratio)
+        map_y1 = round((y1 + pad_h / (2 * aspect_ratio)) * aspect_ratio)
+
+        # (x2, y2) is the bottom-right corner of single bounding box
+        map_x2 = round((x2 + pad_w / (2 * aspect_ratio)) * aspect_ratio)
+        map_y2 = round((y2 + pad_h / (2 * aspect_ratio)) * aspect_ratio)
+        letterboxed_bboxes.append((map_x1, map_y1, map_x2, map_y2))
+    return letterboxed_bboxes
 
 
 def inverse_letterbox_coordinate_transform(
