@@ -229,12 +229,11 @@ def coordinate_normalize(
     letterbox_coordinate = letterbox_coordinate_transform(
         bboxes=bboxes, original_size=original_size, letterboxed_size=letterboxed_size
     )
-    print(letterbox_coordinate)
 
-    noramlized_coordinate = []
+    normalized_coordinate = []
     for bbox in letterbox_coordinate:
         x1, y1, x2, y2 = bbox
-        noramlized_coordinate.append(
+        normalized_coordinate.append(
             (
                 x1 / letterboxed_size.width,
                 y1 / letterboxed_size.height,
@@ -243,7 +242,57 @@ def coordinate_normalize(
             )
         )
 
-    return noramlized_coordinate
+    return normalized_coordinate
+
+
+def xyxy2xywh(x: np.array):
+    """
+    Convert bounding box (x1, y1, x2, y2) to bounding box (x, y, w, h).
+    """
+    y = np.copy(x)
+    y[..., 0] = (x[..., 0] + x[..., 2]) / 2  # x center
+    y[..., 1] = (x[..., 1] + x[..., 3]) / 2  # y center
+    y[..., 2] = x[..., 2] - x[..., 0]  # width
+    y[..., 3] = x[..., 3] - x[..., 1]  # height
+    return y
+
+
+# TODO(Adam-Al-Rahman): In future make it to work for multiple folder where labels_dir take list of label folders
+def labels_dir_xyxy2xywh(labels_dir: str):
+    "Convert text file from labels directory. [x1, y1, x2, y2] -> [x_center, y_center, width, height]"
+
+    # Iterate through the text files in the directory
+    for filename in os.listdir(labels_dir):
+        if filename.endswith(".txt"):
+            file_path = os.path.join(labels_dir, filename)
+
+            # Read the content of the text file
+            with open(file_path, "r") as file:
+                lines = file.readlines()
+
+                # Process and convert coordinate from xyxy to xywh
+                updated_lines = []
+                for line in lines:
+                    parts = line.strip().split(" ")
+                    if len(parts) == 5:
+                        label, xmin, ymin, xmax, ymax = parts
+
+                        # Convert the coordinates to float values
+                        xmin, ymin, xmax, ymax = map(float, [xmin, ymin, xmax, ymax])
+
+                        x_center, y_center, width, height = xyxy2xywh(
+                            np.array([xmin, ymin, xmax, ymax])
+                        )
+                        updated_line = (
+                            f"{label} {x_center} {y_center} {width} {height}\n"
+                        )
+                        updated_lines.append(updated_line)
+
+                # Overwrite the text file with the updated coordinates
+                with open(file_path, "w") as file:
+                    file.writelines(updated_lines)
+
+                print(f"Updated coordinates in {filename}")
 
 
 # TODO(Vijay-J0shi): Optimize the code to handle relative paths

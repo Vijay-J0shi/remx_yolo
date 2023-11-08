@@ -11,7 +11,7 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_12032018183648_P197.jpg,"(771, 51, 1344, 1149)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030025_P131.jpg,"(650, -13, 1981, 1363)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024503_P104.jpg,"(877, 323, 1229, 1050)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030126_P192.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030126_P192.jpg,"(1206, 387, 1418, 1027)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025927_P76.jpg,"(662, 298, 1718, 1005)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030107_P168.jpg,"(851, 499, 1222, 832)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018183645_P191.jpg,"(771, 42, 1347, 1146)"
@@ -27,11 +27,11 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_28022018030001_P89.jpg,"(874, 29, 1747, 1472)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024518_P140.jpg,"(3, 22, 758, 1517)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030033_P147.jpg,"(1072, 346, 1309, 909)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071151_P222.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071151_P222.jpg,"(1181, 250, 1389, 810)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171130_P239.jpg,"(3, 374, 483, 858)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024514_P132.jpg,"(16, 0, 1091, 1488)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030137_P210.jpg,"(1562, 458, 2048, 1133)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071147_P218.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071147_P218.jpg,"(1165, 298, 1373, 810)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024511_P124.jpg,"(0, 13, 1094, 1462)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030134_P205.jpg,"(1549, 429, 2048, 1120)"
 ./datasets/cheetal/in_kuno_01_c001a_19032018065922_P252.jpg,"(557, 147, 1494, 998)"
@@ -58,11 +58,11 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_12032018024509_P118.jpg,"(909, 320, 1226, 1050)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025917_P62.jpg,"(502, 298, 1107, 1027)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018183648_P199.jpg,"(774, 48, 1350, 1152)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030125_P188.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030125_P188.jpg,"(1184, 422, 1414, 1018)"
 ./datasets/cheetal/in_kuno_01_c001a_10032018063739_P26.jpg,"(1050, 320, 1360, 822)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024503_P102.jpg,"(877, 326, 1226, 1046)"
 ./datasets/cheetal/in_kuno_01_c001a_19032018065923_P253.jpg,"(557, 141, 1494, 995)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071145_P216.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071145_P216.jpg,"(1149, 397, 1418, 806)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025843_P33.jpg,"(154, 307, 749, 906)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025919_P65.jpg,"(550, 294, 1155, 1056)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025914_P60.jpg,"(435, 304, 986, 944)"
@@ -70,7 +70,7 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_12032018024513_P128.jpg,"(0, 13, 1126, 1469)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018183625_P175.jpg,"(256, 26, 1363, 1504)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024502_P100.jpg,"(902, 336, 1229, 1053)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030122_P182.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030122_P182.jpg,"(1082, 506, 1354, 845)"
 ./datasets/cheetal/in_kuno_01_c001a_19032018065923_P254.jpg,"(563, 237, 1395, 1002)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030049_P152.jpg,"(1056, 355, 1338, 896)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025851_P50.jpg,"(371, 298, 813, 966)"
@@ -81,11 +81,11 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_28022018030005_P93.jpg,"(934, 74, 1862, 1498)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025853_P53.jpg,"(365, 301, 778, 970)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025832_P15.jpg,"(-3, 330, 547, 829)"
-./datasets/cheetal/in_kuno_01_c001a_19032018065927_P258.jpg,None
-./datasets/cheetal/in_kuno_01_c001a_14032018071150_P221.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_19032018065927_P258.jpg,"(1082, 384, 1315, 909)"
+./datasets/cheetal/in_kuno_01_c001a_14032018071150_P221.jpg,"(1171, 266, 1379, 810)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025951_P78.jpg,"(666, 298, 1318, 989)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030136_P209.jpg,"(1562, 442, 2048, 1142)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030032_P143.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030032_P143.jpg,"(1050, 381, 1280, 909)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030016_P113.jpg,"(931, 29, 1910, 1494)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171139_P246.jpg,"(173, 314, 1546, 1386)"
 ./datasets/cheetal/in_kuno_01_c001a_03032018191427_P4.jpg,"(1005, 378, 1472, 934)"
@@ -99,10 +99,10 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_12032018024513_P126.jpg,"(-3, 13, 1123, 1472)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018115513_P230.jpg,"(3, 22, 1027, 1523)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030051_P156.jpg,"(208, 467, 714, 797)"
-./datasets/cheetal/in_kuno_01_c001a_16032018171131_P240.jpg,None
-./datasets/cheetal/in_kuno_01_c001a_14032018071148_P219.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_16032018171131_P240.jpg,"(0, 355, 237, 851)"
+./datasets/cheetal/in_kuno_01_c001a_14032018071148_P219.jpg,"(1174, 304, 1398, 806)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024505_P108.jpg,"(880, 323, 1232, 1050)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030124_P186.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030124_P186.jpg,"(1165, 499, 1411, 1014)"
 ./datasets/cheetal/in_kuno_01_c001a_03032018191425_P2.jpg,"(1002, 371, 1680, 954)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025852_P52.jpg,"(365, 301, 810, 963)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018183623_P169.jpg,"(253, 26, 1373, 1504)"
@@ -119,9 +119,9 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_12032018024514_P130.jpg,"(3, 3, 1123, 1450)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030108_P170.jpg,"(1459, 384, 2048, 938)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025913_P58.jpg,"(406, 298, 829, 947)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030123_P184.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030123_P184.jpg,"(1120, 515, 1421, 835)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171126_P235.jpg,"(256, 390, 950, 902)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030126_P190.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030126_P190.jpg,"(1190, 384, 1414, 1018)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024521_P142.jpg,"(202, 67, 1203, 1510)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030027_P137.jpg,"(886, 259, 1258, 1130)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025925_P72.jpg,"(563, 285, 1443, 1005)"
@@ -154,7 +154,7 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_28022018025842_P29.jpg,"(86, 298, 698, 883)"
 ./datasets/cheetal/in_kuno_01_c001a_19032018065917_P249.jpg,"(243, 54, 1283, 1008)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171136_P243.jpg,"(10, 54, 1117, 1245)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030037_P151.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030037_P151.jpg,"(1053, 355, 1274, 890)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025837_P23.jpg,"(-3, 320, 554, 851)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030005_P92.jpg,"(938, 54, 1862, 1491)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171135_P242.jpg,"(0, 195, 480, 1066)"
@@ -170,12 +170,12 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_28022018025954_P82.jpg,"(669, 298, 1296, 989)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030112_P178.jpg,"(845, 499, 1213, 826)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024501_P98.jpg,"(845, 317, 1213, 1037)"
-./datasets/cheetal/in_kuno_01_c001a_08032018173548_P18.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_08032018173548_P18.jpg,"(-3, 230, 746, 1494)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025836_P22.jpg,"(-3, 317, 547, 838)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030031_P141.jpg,"(1037, 314, 1318, 944)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018183621_P165.jpg,"(250, 22, 1370, 1504)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025926_P74.jpg,"(656, 301, 1539, 1011)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030034_P148.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030034_P148.jpg,"(1069, 371, 1290, 909)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025849_P47.jpg,"(352, 294, 842, 954)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024515_P134.jpg,"(51, 13, 992, 1507)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024510_P120.jpg,"(720, 221, 1133, 1107)"
@@ -183,10 +183,10 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_28022018025840_P25.jpg,"(35, 310, 608, 864)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025915_P61.jpg,"(458, 301, 1008, 998)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030009_P99.jpg,"(886, 246, 1453, 1478)"
-./datasets/cheetal/in_kuno_01_c001a_28022018025832_P13.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018025832_P13.jpg,"(-3, 288, 534, 832)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030021_P119.jpg,"(835, 19, 2019, 1510)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030014_P109.jpg,"(950, 29, 1616, 1478)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071152_P223.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071152_P223.jpg,"(1174, 250, 1389, 810)"
 ./datasets/cheetal/in_kuno_01_c001a_10032018063747_P42.jpg,"(806, 13, 1171, 1101)"
 ./datasets/cheetal/in_kuno_01_c001a_04032018165318_P67.jpg,"(-6, 531, 403, 1498)"
 ./datasets/cheetal/in_kuno_01_c001a_08032018173546_P14.jpg,"(-22, 96, 1603, 1542)"
@@ -195,24 +195,24 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_12032018183642_P185.jpg,"(419, 134, 1219, 1494)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030052_P157.jpg,"(400, 474, 886, 806)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025914_P59.jpg,"(413, 304, 912, 915)"
-./datasets/cheetal/in_kuno_01_c001a_28022018025831_P11.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018025831_P11.jpg,"(0, 317, 538, 838)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030054_P159.jpg,"(1059, 362, 1453, 886)"
 ./datasets/cheetal/in_kuno_01_c001a_10032018063749_P46.jpg,"(0, 13, 877, 1510)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071149_P220.jpg,None
-./datasets/cheetal/in_kuno_01_c001a_14032018071153_P224.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071149_P220.jpg,"(1171, 291, 1395, 806)"
+./datasets/cheetal/in_kuno_01_c001a_14032018071153_P224.jpg,"(1178, 250, 1389, 810)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024523_P146.jpg,"(0, 13, 771, 1520)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025923_P70.jpg,"(499, 294, 1347, 1002)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024516_P136.jpg,"(0, 26, 803, 1520)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025848_P45.jpg,"(342, 301, 829, 966)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024505_P110.jpg,"(864, 320, 1306, 1046)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071144_P215.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071144_P215.jpg,"(1203, 310, 1450, 790)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030127_P194.jpg,"(1226, 470, 1478, 1005)"
 ./datasets/cheetal/in_kuno_01_c001a_03032018191427_P5.jpg,"(1046, 374, 1427, 909)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030003_P90.jpg,"(925, 22, 1821, 1485)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025838_P24.jpg,"(-3, 317, 560, 842)"
-./datasets/cheetal/in_kuno_01_c001a_14032018071146_P217.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_14032018071146_P217.jpg,"(1123, 397, 1389, 813)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030027_P135.jpg,"(470, 26, 1914, 1421)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030035_P149.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030035_P149.jpg,"(1056, 365, 1290, 902)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030132_P202.jpg,"(1491, 518, 2048, 1136)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025958_P87.jpg,"(698, 288, 1395, 1021)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018115516_P234.jpg,None
@@ -226,7 +226,7 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_28022018025836_P21.jpg,"(-3, 301, 560, 832)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025954_P83.jpg,"(669, 298, 1293, 992)"
 ./datasets/cheetal/in_kuno_01_c001a_12032018024510_P122.jpg,"(579, 179, 1165, 1117)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030033_P145.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030033_P145.jpg,"(1078, 381, 1309, 893)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018025851_P51.jpg,"(365, 301, 810, 960)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030133_P204.jpg,"(1494, 483, 2051, 1130)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171137_P244.jpg,"(6, 342, 925, 1248)"
@@ -240,8 +240,8 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_10032018063742_P32.jpg,"(1046, 355, 1360, 838)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030015_P111.jpg,"(931, 29, 1910, 1494)"
 ./datasets/cheetal/in_kuno_01_c001a_03032018191424_P1.jpg,"(1075, 291, 1971, 989)"
-./datasets/cheetal/in_kuno_01_c001a_28022018030143_P213.jpg,None
-./datasets/cheetal/in_kuno_01_c001a_10032018063745_P38.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_28022018030143_P213.jpg,"(1795, 522, 2042, 1152)"
+./datasets/cheetal/in_kuno_01_c001a_10032018063745_P38.jpg,"(970, 317, 1267, 922)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030023_P127.jpg,"(822, 16, 2010, 1510)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018115512_P229.jpg,"(659, 22, 1120, 1392)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030106_P164.jpg,"(1120, 374, 1930, 880)"
@@ -254,8 +254,10 @@ image location,coordinate
 ./datasets/cheetal/in_kuno_01_c001a_16032018171138_P245.jpg,"(10, 54, 963, 1245)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030144_P214.jpg,None
 ./datasets/cheetal/in_kuno_01_c001a_10032018063746_P40.jpg,"(928, 61, 1258, 986)"
-./datasets/cheetal/in_kuno_01_c001a_08032018173545_P12.jpg,None
+./datasets/cheetal/in_kuno_01_c001a_08032018173545_P12.jpg,"(845, 13, 1843, 1526)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030023_P125.jpg,"(829, 19, 2022, 1510)"
 ./datasets/cheetal/in_kuno_01_c001a_16032018171141_P248.jpg,"(1056, 310, 2038, 1466)"
 ./datasets/cheetal/in_kuno_01_c001a_28022018030136_P208.jpg,"(1562, 438, 2048, 1136)"
+./datasets/unknown/unknown.jpg,"(0, 112, 1032, 740)"
+./datasets/unknown/images.jpg,"(27, 18, 120, 109)"
 ./datasets/axis-deer/test-axis-deer.jpg,"(337, 394, 520, 471)"

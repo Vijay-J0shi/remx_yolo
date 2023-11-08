@@ -55,16 +55,16 @@ def nms(boxes, scores, iou_threshold):
     return keep_boxes
 
 
-def xywh2xyxy(x):
+def xywh2xyxy(x: np.array):
     """
     yolov8 provide bounding box (x, y, w, h).
     Convert bounding box (x, y, w, h) to bounding box (x1, y1, x2, y2)
     """
     y = np.copy(x)
-    y[..., 0] = x[..., 0] - x[..., 2] / 2
-    y[..., 1] = x[..., 1] - x[..., 3] / 2
-    y[..., 2] = x[..., 0] + x[..., 2] / 2
-    y[..., 3] = x[..., 1] + x[..., 3] / 2
+    y[..., 0] = x[..., 0] - x[..., 2] / 2  # x1
+    y[..., 1] = x[..., 1] - x[..., 3] / 2  # y1
+    y[..., 2] = x[..., 0] + x[..., 2] / 2  # x2
+    y[..., 3] = x[..., 1] + x[..., 3] / 2  # y2
     return y
 
 
@@ -102,6 +102,35 @@ def draw_bboxes(img, inverse_coordinates, indices, scores, class_ids, CLASSES):
         "boxes": original_img_boxes,
         "labels": labels,
     }
+
+
+from typing import Tuple
+
+
+def draw_max_confidence_img(original_img: str, max_confidence_coordinate: Tuple):
+    """
+    The function takes an original image and the coordinates of the maximum confidence region, and
+    returns the image with a rectangle drawn around that region.
+
+    :param original_img: The original_img parameter is a string that represents the file path or URL of
+    the original image that you want to draw on
+    :type original_img: str
+    :param max_confidence_coordinate: The `max_confidence_coordinate` parameter is a tuple that contains
+    the coordinates of a rectangle. The coordinates represent the top-left and bottom-right corners of
+    the rectangle. The format of the tuple is `(x1, y1, x2, y2)`, where `(x1, y1
+    :type max_confidence_coordinate: Tuple
+    :return: the modified image with a rectangle drawn around the region of maximum confidence.
+    """
+    # Load the original image
+    img = cv2.imread(original_img)
+
+    # Unpack the coordinates
+    x1, y1, x2, y2 = max_confidence_coordinate
+
+    # Draw the rectangle on the image
+    cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Green color, thickness=2
+
+    return img
 
 
 def model_ort_session(MODEL: str):
@@ -162,7 +191,7 @@ def final_image_pre_process(img, input_shape):
 def bboxs_filter(outputs, input_width, input_height, image_width, image_height):
     # Threshold
     predictions = np.squeeze(outputs).T
-    conf_thresold = 0.85  # confidence score [testing phase]
+    conf_thresold = 0.5  # confidence score [testing phase]
 
     # Filter out object confidence scores below threshold
     scores = np.max(predictions[:, 4:], axis=1)
