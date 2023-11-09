@@ -23,7 +23,7 @@ def compute_iou(box, boxes):
     union_area = box_area + boxes_area - intersection_area
 
     # compute iou
-    iou = np.where(union_area > 0, intersection_area / union_area, 0)
+    iou = np.where(union_area > 0, intersection_area / union_area, 0).astype(float)
 
     return iou
 
@@ -124,8 +124,11 @@ def draw_max_confidence_img(original_img: str, max_confidence_coordinate: Tuple)
     # Load the original image
     img = cv2.imread(original_img)
 
+    # if coordinate are empty
+    x1, y1, x2, y2 = (0, 0, 0, 0)
     # Unpack the coordinates
-    x1, y1, x2, y2 = max_confidence_coordinate
+    if max_confidence_coordinate:
+        x1, y1, x2, y2 = max_confidence_coordinate
 
     # Draw the rectangle on the image
     cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Green color, thickness=2
@@ -338,7 +341,7 @@ def predict_images(
                                 letterboxed_output["max_score_index"]
                             ]
                             if letterboxed_output["scores"]
-                            else "None",
+                            else (),
                         }
                 labels_dir_predict[label] = all_file_predict
         return labels_dir_predict
