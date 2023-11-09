@@ -362,6 +362,45 @@ def img_label_map(labels_dir, img_dir):
                 print(f"Image '{image_name}' not found.")
 
 
+def get_thickness_based_on_resolution(
+    img_resolution: Tuple,
+    proportionality_factor: float = 0.001,
+    fixed_thickness_pixels: int = 4,
+):
+    """
+    The function `get_thickness_based_on_resolution` calculates the thickness of an image based on its
+    resolution, using a proportionality factor and a fixed number of pixels for thickness.
+
+    :param img_resolution: The img_resolution parameter is a tuple that represents the resolution of an
+    image. It typically consists of two values: the width and height of the image in pixels. For
+    example, (1920, 1080) represents a resolution of 1920 pixels wide and 1080 pixels high
+    :type img_resolution: Tuple
+    :param proportionality_factor: The proportionality factor is a value that determines the
+    relationship between the image resolution and the desired thickness. It is multiplied by the minimum
+    resolution value (either width or height) and the fixed thickness in pixels to calculate the final
+    thickness value. You can adjust this factor to achieve the desired thickness based on your
+    :type proportionality_factor: float
+    :param fixed_thickness_pixels: The parameter "fixed_thickness_pixels" is the number of pixels you
+    want to use as a fixed thickness. This value can be adjusted based on your preference, defaults to 2
+    :type fixed_thickness_pixels: int (optional)
+    :return: the calculated thickness based on the image resolution. If the calculated thickness is
+    greater than 0, it will return that value. Otherwise, it will return 1.
+    """
+
+    # Define a proportionality factor (you can adjust this based on your preference)
+    proportionality_factor = proportionality_factor
+
+    # Define a fixed number of pixels for thickness (adjust as needed)
+    fixed_thickness_pixels = fixed_thickness_pixels
+
+    # Calculate the thickness based on the resolution
+    thickness = int(
+        min(img_resolution) * fixed_thickness_pixels * proportionality_factor
+    )
+
+    return thickness if thickness > 0 else 1
+
+
 def inverse_letterbox_coordinate_transform(
     bboxes: List[BBox], original_size: ImgSize, letterboxed_size: ImgSize
 ) -> List[BBox]:

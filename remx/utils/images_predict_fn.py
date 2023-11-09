@@ -4,7 +4,12 @@ import cv2
 from PIL import Image
 import numpy as np
 
-from images import letterbox, ImgSize, inverse_letterbox_coordinate_transform
+from images import (
+    letterbox,
+    ImgSize,
+    inverse_letterbox_coordinate_transform,
+    get_thickness_based_on_resolution,
+)
 
 
 def compute_iou(box, boxes):
@@ -123,7 +128,6 @@ def draw_max_confidence_img(original_img: str, max_confidence_coordinate: Tuple)
     """
     # Load the original image
     img = cv2.imread(original_img)
-
     # if coordinate are empty
     x1, y1, x2, y2 = (0, 0, 0, 0)
     # Unpack the coordinates
@@ -131,7 +135,13 @@ def draw_max_confidence_img(original_img: str, max_confidence_coordinate: Tuple)
         x1, y1, x2, y2 = max_confidence_coordinate
 
     # Draw the rectangle on the image
-    cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Green color, thickness=2
+    cv2.rectangle(
+        img,
+        (x1, y1),
+        (x2, y2),
+        (255, 0, 0),
+        get_thickness_based_on_resolution(img.shape[1], img.shape[0]),
+    )  # Green color, thickness=resolution based
 
     return img
 
