@@ -8,22 +8,22 @@ from images import letterbox, ImgSize, inverse_letterbox_coordinate_transform
 
 
 def compute_iou(box, boxes):
-    # Compute xmin, ymin, xmax, ymax for both boxes
+    # compute xmin, ymin, xmax, ymax for both boxes
     xmin = np.maximum(box[0], boxes[:, 0])
     ymin = np.maximum(box[1], boxes[:, 1])
     xmax = np.minimum(box[2], boxes[:, 2])
     ymax = np.minimum(box[3], boxes[:, 3])
 
-    # Compute intersection area
+    # compute intersection area
     intersection_area = np.maximum(0, xmax - xmin) * np.maximum(0, ymax - ymin)
 
-    # Compute union area
+    # compute union area
     box_area = (box[2] - box[0]) * (box[3] - box[1])
     boxes_area = (boxes[:, 2] - boxes[:, 0]) * (boxes[:, 3] - boxes[:, 1])
     union_area = box_area + boxes_area - intersection_area
 
-    # Compute IoU
-    iou = intersection_area / union_area
+    # compute iou
+    iou = np.where(union_area > 0, intersection_area / union_area, 0)
 
     return iou
 
@@ -86,15 +86,15 @@ def draw_bboxes(img, inverse_coordinates, indices, scores, class_ids, CLASSES):
         # cls = CLASSES[cls_id]
         box_color = (255, 0, 255)
 
-        cv2.rectangle(img, tuple(bbox[:2]), tuple(bbox[2:]), box_color, 10)
+        cv2.rectangle(img, tuple(bbox[:2]), tuple(bbox[2:]), box_color, 2)
         # cv2.putText(
         #     img,
         #     f"{cls}:{int(score*100)}",
         #     (bbox[0], bbox[1] - 2),
         #     fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-        #     fontScale=3.0,
+        #     fontScale=1.0,
         #     color=(0, 0, 0),
-        #     thickness=3,
+        #     thickness=1,
         # )
 
     return {
@@ -265,7 +265,6 @@ def predict_images(
     else:
         labels_dir_predict = {}
         for root, labels, _ in os.walk(main_dir):
-            predict_output = []
             for label in labels:
                 nested_folder_path = os.path.join(root, label)
                 all_file_predict = {}
@@ -297,7 +296,9 @@ def predict_images(
 
                         # Apply non-maxima suppression to suppress weak, overlapping bounding boxes
                         indices = nms(
-                            bboxs_outputs["boxes"], bboxs_outputs["scores"], 0.3
+                            bboxs_outputs["boxes"],
+                            bboxs_outputs["scores"],
+                            iou_threshold=0.5,
                         )
 
                         letterboxed_output = letterboxed_result(
@@ -323,20 +324,21 @@ def predict_images(
                         all_file_predict[image] = {
                             "img_loc": os.path.join(root, label, image),
                             "pred_img": original_image_predict["img"],
-                            "coordinate": inverse_coordinate,
-                            "labels": label,
-                        }
-
-                        predict_output.append(
-                            {
-                                "img_loc": os.path.join(root, label, image),
-                                "max_confidence_coordinate": inverse_coordinate[
+                            "max_cf_img": draw_max_confidence_img(
+                                img,
+                                inverse_coordinate[
                                     letterboxed_output["max_score_index"]
                                 ]
                                 if letterboxed_output["scores"]
                                 else "None",
-                            }
-                        )
+                            ),
+                            "coordinate": inverse_coordinate,
+                            "labels": label,
+                            "max_confidence_coordinate": inverse_coordinate[
+                                letterboxed_output["max_score_index"]
+                            ]
+                            if letterboxed_output["scores"]
+                            else "None",
+                        }
                 labels_dir_predict[label] = all_file_predict
-                labels_dir_predict["predict_output"] = predict_output
         return labels_dir_predict
