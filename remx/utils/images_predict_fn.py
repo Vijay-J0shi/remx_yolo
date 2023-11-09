@@ -140,7 +140,7 @@ def draw_max_confidence_img(original_img: str, max_confidence_coordinate: Tuple)
         (x1, y1),
         (x2, y2),
         (255, 0, 0),
-        get_thickness_based_on_resolution(img.shape[1], img.shape[0]),
+        get_thickness_based_on_resolution((img.shape[1], img.shape[0])),
     )  # Green color, thickness=resolution based
 
     return img
